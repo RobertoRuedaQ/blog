@@ -2,13 +2,51 @@
 <html>
 <head>
   <title>Blog</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="wrap">
+<!---start-sidebar---->
+<div class="left-sidebar">
+	<div class="logo">
+		<a href="#"><img src="../images/logo.svg" title="logo" /></a>
+		<h1>Blog</h1>
+	</div>
+	<div class="top-nav">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="">Sign In</a></li>
+			<li><a href="">Log In</a></li>
+			<li><a href="/posts/new">Create a new Post</a></li>
+			<li><a href="mailto: rueda.roberto89@gmail.com">Contact</a></li>
 
-<%= yield %>
+		</ul>
+	</div>
+</div>
 
+<div class="content">
+	<div class="grids">
+		<div class="grid box">
+		<div class="row">
+	      <% flash.each do |name, msg| %>
+	  	  <%= content_tag(:div, msg, class: "alert") %>
+	      <% end %>	
+ <%= yield %>
+<div class="footer">
+	<p>Feedlive &#169	 All Rights Reserved | Designed By <a href="http://w3layouts.com/">W3Layouts</a></p>
+</div>
+<div class="clear"> </div>
+					
+        </div>
 </body>
 </html>
+
+
+

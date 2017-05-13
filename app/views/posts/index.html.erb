@@ -1,11 +1,18 @@
-<h2>index</h2>
-
 <% @posts.each do |post| %>
-<div class="post_wrapper">
-	<h2 class="title"><%= link_to post.title, posts_path %></h2>
-	<p class="date">
-		<%= post.created_at.strftime("%B, %d, %Y") %>
-	</p>
-	<%end %>
-	
-</div>
+<div class="grid-header">
+				<h3><%= link_to post.title, posts_path %></h3>
+				<ul>
+				<li><span>Post By Admin <%= post.created_at.strftime("%B, %d, %Y") %></span></li>
+				<li><a href="#">5 comments</a></li>
+				</ul>
+			</div>
+			<div class="grid-img-content">
+			<img src="#{post.image}" alt=":)">
+				<p><%= post.body  %><a href="#">...</a></p>
+				<div class="clear"> </div>
+			</div>
+			
+		</div>
+<%end %>
+
+
