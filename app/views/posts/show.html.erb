@@ -8,3 +8,10 @@
 	<%= @post.body %>
 </p>
 
+<p><strong>This post has <%= @post.comments.count%> comments</strong></p>
+	<%= render @post.comments %>
+
+<p><strong>Add  a comments</strong></p>
+
+	<%= render "comments/form" %>
+
