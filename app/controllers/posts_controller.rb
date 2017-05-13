@@ -22,12 +22,25 @@ class PostsController < ApplicationController
   	@post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(params[:post].permit(:name, :title, :body))
+      redirect_to @post
+    else
+      render "edit"
+    end
+  end
+
   def destroy
    @post = Post.find(params[:id])
    @post.destroy
-
-   redirect_to :index, alert: "the post has been deleted"
+   redirect_to posts_path, alert: "the post has been deleted"
   end
+
 
   private
   def post_params

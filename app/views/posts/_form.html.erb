@@ -1,0 +1,35 @@
+<div class="form_group">
+
+<%= form_for @post do |f| %>
+<% if @post.errors.any? %>
+<h3><%= pluralize(@post.errors.count, "Errors")%>  prevented to create the post</h3><br>
+<%end %>
+<p>
+  <ul>
+	<% @post.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+  </ul>	
+</p>
+<%end %>
+
+	<div class="form_text">
+		<%= f.label :name %><br>
+		<%=  f.text_field :name%>
+	</div>
+
+	<div class="form_text">
+		<%= f.label :title %><br>
+		<%=  f.text_field :title%>
+	</div>
+
+	<div class="form_control" rows="5">
+		<%= f.label :body %><br>
+		<%= f.text_area :body%>
+	</div>
+
+	<div class="btn">
+		<%= f.submit %>
+		<% end %>	
+	</div>	
+</div>
+

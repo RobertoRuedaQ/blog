@@ -1,8 +1,8 @@
 <% @posts.each do |post| %>
 <div class="grid-header">
-				<h3><%= link_to post.title, posts_path %></h3>
+				<h3><%= link_to post.title, posts_path%></h3>
 				<ul>
-				<li><span>Post By Admin <%= post.created_at.strftime("%B, %d, %Y") %></span></li>
+				<li><span>Post By <%= post.name %> <%= post.created_at.strftime("%B, %d, %Y") %></span></li>
 				<li><a href="#">5 comments</a></li>
 				</ul>
 			</div>
