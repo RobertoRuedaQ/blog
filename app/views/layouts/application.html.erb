@@ -16,17 +16,23 @@
 <!---start-sidebar---->
 <div class="left-sidebar">
 	<div class="logo">
-		<a href="#"><img src="../images/logo.svg" title="logo" /></a>
+ 		<img src="<%= asset_path 'logo1.png' %>">
 		<h1>Blog</h1>
 	</div>
 	<div class="top-nav">
 		<ul>
 			<li><a href="/">Home</a></li>
-			<li><a href="">Sign In</a></li>
-			<li><a href="">Log In</a></li>
-			<li><a href="/posts/new">Create a new Post</a></li>
-			<li><a href="mailto: rueda.roberto89@gmail.com">Contact</a></li>
-
+			<% if !user_signed_in? %>
+			<li><%= link_to "sign In", new_user_registration_path %></li>
+			<li><%= link_to "Log In", new_user_session_path %></li>
+			<% end %>
+			<% if user_signed_in?  %>
+			<li><%= link_to "Create new post", new_post_path %></li>
+			<li><%= link_to "Log out", destroy_user_session_path, method: :DELETE %></li>
+			<li>
+				<p>Welcome <%= current_user.email  %></p>
+			</li>
+			<%end %>
 		</ul>
 	</div>
 </div>
@@ -38,7 +44,10 @@
 	      <% flash.each do |name, msg| %>
 	  	  <%= content_tag(:div, msg, class: "alert") %>
 	      <% end %>	
+
  <%= yield %>
+
+
 <div class="footer">
 	<p>Feedlive &#169	 All Rights Reserved | Designed By <a href="http://w3layouts.com/">W3Layouts</a></p>
 </div>
